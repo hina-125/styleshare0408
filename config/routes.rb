@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root "posts#index"
+  # root to: 'posts#index'を下記に変更
+  root to: 'toppages#index'
   resources :posts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'signup', to: 'users#new'
+  resources :users, only: [:index, :show, :create]
 end
