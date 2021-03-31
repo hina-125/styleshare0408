@@ -10,12 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_130817) do
+ActiveRecord::Schema.define(version: 2021_03_31_140357) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image"
+    t.string "title"
+    t.text "text"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -26,4 +30,5 @@ ActiveRecord::Schema.define(version: 2021_03_29_130817) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "posts", "users"
 end
