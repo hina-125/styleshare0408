@@ -1,9 +1,29 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<h2 style="text-align:center">STYLE SHARE</h2>
+
+  <div>#HOT STYLE</div>
+<ul class="list-unstyled">
+  <% @posts.each do |post| %>
+  <li>
+    <div><%= image_tag post.image.url size: '320x480' %></div>
+    <div>TITLE:<%= post.title %></div>
+    <div>TEXT:<%= post.text %></div>
+  </li>
+  
+    <div>
+      <% if current_user == post.user %>
+      <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+      <% end %>
+    </div>
+
+  <% end %>
+  <%= paginate @posts %>
+</ul>
+  
+
 <% else %>
     <div class="text-center">
       <h1>Welcome to the STYLE SHARE!!</h1>
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-secondary' %>
     </div>
-</div>
 <% end %>

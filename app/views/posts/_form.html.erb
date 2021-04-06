@@ -1,8 +1,6 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= form_with(model: post, local: true) do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,12 +9,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
+  <div class="form-group">
+    <%= f.label :image, 'image' %>
+    <%= f.file_field :image %>
   </div>
+  
+  <div class="form-group">
+    <%= f.label :title, 'title' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :text, 'text' %>
+    <%= f.text_area :text, class: 'form-control' %>
+  </div>
+  
+    <%= f.submit 'POST', class: 'btn btn-secondary' %>
+  </ul> 
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
