@@ -1,24 +1,23 @@
 <% if logged_in? %>
 <h2 style="text-align:center">STYLE SHARE</h2>
 
-  <div>#HOT STYLE</div>
-<ul class="list-unstyled">
+<h3>#HOT STYLE</h3>
+<div class="row">
   <% @posts.each do |post| %>
-  <li>
-    <div><%= image_tag post.image.url size: '320x480' %></div>
+  <div class="col-md-4">
+    <div><%= image_tag post.image.url, size: '200x300' %></div>
     <div>TITLE:<%= post.title %></div>
     <div>TEXT:<%= post.text %></div>
-  </li>
-  
+
     <div>
       <% if current_user == post.user %>
       <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
       <% end %>
     </div>
-
+  </div>
   <% end %>
   <%= paginate @posts %>
-</ul>
+</div>
   
 
 <% else %>

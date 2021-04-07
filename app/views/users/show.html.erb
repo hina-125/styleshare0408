@@ -11,8 +11,14 @@
     </div>
  </aside>
   <div class="col-sm-8">
-    <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">MY STYLE</a></li>
+    <ul>
+      <h2>MY STYLE</h2>
+        <% @posts.each do |post| %>
+         <div><%= image_tag post.image.url, size: '200x300' %></div>
+         <div>TITLE:<%= post.title %></div>
+         <div>TEXT:<%= post.text %></div>
+        <% end %>
     </ul>
+    <%= paginate @posts %>
   </div>
 </div>
