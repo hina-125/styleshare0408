@@ -12,14 +12,12 @@
  </aside>
  <link rel="stylesheet" href="image">
   <div class="col-sm-8">
-    <ul>
       <h2>MY STYLE</h2>
         <% @posts.each do |post| %>
          <div><%= image_tag post.image.url, size: '200x300' %></div>
          <div>TITLE:<%= post.title %></div>
          <div>TEXT:<%= post.text.truncate(20) %></div>
         <% end %>
-    </ul>
     <%= paginate @posts %>
   </div>
 </div>
