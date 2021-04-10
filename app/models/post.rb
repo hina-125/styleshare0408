@@ -4,6 +4,6 @@ class Post < ApplicationRecord
   #serialize :image, JSON
   
   validates :image, presence: true
-  validates :title, presence: true
-  validates :text, presence: true
+  validates :title, presence: true, length: { maximum: 15 }
+  validates :text, presence: true, length: { maximum: 30 }
 end

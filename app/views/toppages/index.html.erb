@@ -1,24 +1,24 @@
 <% if logged_in? %>
-<h2 style="text-align:center">STYLE SHARE</h2>
+    <h2 style="text-align:center">STYLE SHARE</h2>
+    <link rel="stylesheet" href="image">
 
-<h3>#HOT STYLE</h3>
-<div class="row">
-  <% @posts.each do |post| %>
-  <div class="col-md-4">
-    <div><%= image_tag post.image.url, size: '200x300' if post.image.present? %></div>
-    <div>TITLE:<%= post.title %></div>
-    <div>TEXT:<%= post.text %></div>
+    <h3>#HOT STYLE</h3>
+    <div class="row">
+      <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <div><%= image_tag post.image.url if post.image.present? %></div>
+        <div>TITLE:<%= post.title.truncate(20) %></div>
+        <div>TEXT:<%= post.text.truncate(20) %></div>
 
-    <div>
-      <% if current_user == post.user %>
-      <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        <div>
+          <% if current_user == post.user %>
+            <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
       <% end %>
+      <%= paginate @posts %>
     </div>
-  </div>
-  <% end %>
-  <%= paginate @posts %>
-</div>
-  
 
 <% else %>
     <div class="text-center">
