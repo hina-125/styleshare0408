@@ -1,3 +1,4 @@
+<% if @user == current_user %>
 <div class="row">
   <aside class="col-sm-4">
     <h2>#MY PAGE</h2>
@@ -21,3 +22,5 @@
     <%= paginate @posts %>
   </div>
 </div>
+
+<% end %>
