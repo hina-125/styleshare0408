@@ -2,9 +2,9 @@
   <% if post.errors.any? %>
     <div id="error_explanation">
       <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      　　<% post.errors.full_messages.each do |message| %>
+        　　<li><%= message %></li>
+      　　<% end %>
       </ul>
     </div>
   <% end %>
@@ -24,6 +24,6 @@
     <%= f.text_field :text, class: 'form-control' %>
   </div>
   
-    <%= f.submit 'POST', class: 'btn btn-secondary' %>
+  <%= f.submit 'POST', class: 'btn btn-secondary' %>
 
 <% end %>
