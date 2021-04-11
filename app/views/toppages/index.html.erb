@@ -4,26 +4,26 @@
 
     <h3>#HOT STYLE</h3>
     <div class="row">
-    <% if @posts.present? %>
-      <% @posts.each do |post| %>
-        <div class="col-md-4">
-          <div><%= image_tag post.image.url, alt: "styleimage" if post.image.present? %></div>
-          <div>TITLE:<%= post.title.truncate(20) %></div>
-          <div>TEXT:<%= post.text.truncate(20) %></div>
+      <% if @posts.present? %>
+        <% @posts.each do |post| %>
+          <div class="col-md-4">
+            <div><%= image_tag post.image.url, alt: "styleimage" if post.image.present? %></div>
+            <div>TITLE:<%= post.title.truncate(20) %></div>
+            <div>TEXT:<%= post.text.truncate(20) %></div>
 
-          <div>
-          <% if current_user == post.user %>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
+
+            <% if current_user == post.user %>
+              <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+
           </div>
-        </div>
+        <% end %>
+        <%= paginate @posts %>
+
+      <% else %>
+        <h4>投稿された画像はありません。</h4>
       <% end %>
-      <%= paginate @posts %>
-    </div>
-    
-    <% else %>
-      <h3>投稿された画像はありません。</h3>
-    <% end %>
+  　</div>
     
 <% else %>
     <div class="text-center">
